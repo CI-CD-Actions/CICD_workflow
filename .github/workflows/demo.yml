@@ -1,0 +1,12 @@
+#this is demo job
+
+name: running test on self-hosted runner
+on:
+  workflow_dispatch
+jobs:
+  test:
+    runs-on: cicd-server
+    steps:
+      - name: running sample test
+        run: echo "successfull"
+        
