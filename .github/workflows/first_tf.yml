@@ -1,0 +1,17 @@
+name: terraform run
+
+on:
+  workflow_dispatch
+
+jobs:
+  terraform:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Run Terraform Init
+        run: terraform init
+
+      - name: Run Terraform Plan
+        run: terraform plan
