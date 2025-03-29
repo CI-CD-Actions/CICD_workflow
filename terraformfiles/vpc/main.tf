@@ -50,7 +50,7 @@ resource "aws_subnet" "cicd_subnet" {       # creating subnet to vpc
     Name = "cicd-subent"
   }
 }
-output "cicd_subent" {                   #fetching output for reusing the value in child module
+output "cicd_subnet" {                   #fetching output for reusing the value in child module
   value = aws_subnet.cicd_subnet.id
 }
 output "cicd_sg" {                #fetching output for reusing the value in child module
