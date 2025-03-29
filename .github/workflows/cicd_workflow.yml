@@ -46,6 +46,11 @@ jobs:
      steps:
        - name: checking out repository
          uses: actions/checkout@v4
+
+       - name: Configure AWS Credentials
+         run: |
+          echo "AWS_ACCESS_KEY_ID=${{ secrets.ACCESS_KEY }}" >> $GITHUB_ENV
+          echo "AWS_SECRET_ACCESS_KEY=${{ secrets.SECRET_KEY }}" >> $GITHUB_ENV
          
        - name: Download Terraform Output from S3
          run: |
