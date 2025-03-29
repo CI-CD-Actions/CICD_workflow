@@ -9,7 +9,12 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
+      - name: Set up SSH Key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.private_key }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan 10.11.1.109 >> ~/.ssh/known_hosts
       - name: Run Ansible Playbook
         working-directory: ansiblefiles
         run: ansible-playbook -i inventory main.yml
