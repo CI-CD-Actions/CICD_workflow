@@ -16,4 +16,7 @@ jobs:
 
       - name: Run Terraform Plan
         working-directory: terraformfiles
+        env:
+          TF_VAR_aws_access_key: ${{ secrets.ACCESS_KEY }}
+          TF_VAR_aws_secret_key: ${{ secrets.SECRET_KEY }}
         run: terraform plan
