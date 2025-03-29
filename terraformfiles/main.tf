@@ -17,7 +17,7 @@ module "module_vpc" { # calling vpc module to get the details
 resource "aws_instance" "my_ec2_system" {
   ami             = module.aws_ami.ami_id
   instance_type   = "t2.micro"
-  key_name        = "key-001501e8cc53ade44"
+  key_name        = "CICD_Server"
   vpc_security_group_ids = [ module.module_vpc.cicd_sg ] #security group assigned
   subnet_id = module.module_vpc.cicd_subnet  # updated subnet group
   tags = {
