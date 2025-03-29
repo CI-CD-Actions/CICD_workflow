@@ -35,21 +35,10 @@ jobs:
         working-directory: terraformfiles
         run: terraform apply -auto-approve
 
-      - name: Save Terraform State file
-        uses: actions/upload-artifact@v4
-        with:
-          name: terraform-state
-          path: terraformfiles/terraform.tfstate
-
-      - name: Extract Terraform Output
-        working-directory: terraformfiles
-        run: terraform output -json > tf_output.json
-
       - name: Upload Terraform Output
-        uses: actions/upload-artifact@v4
-        with:
-          name: tf-output
-          path: terraformfiles/tf_output.json
+        run: |
+          terraform output -json > tf_output.json
+          aws s3 cp tf_output.json s3://your-terraform-state-bucket/tf_output.json
         
   dynamic-phase:
      runs-on: self-hosted
@@ -58,11 +47,9 @@ jobs:
        - name: checking out repository
          uses: actions/checkout@v4
          
-       - name: Download Terraform Output
-         uses: actions/download-artifact@v4
-         with:
-          name: tf-output
-          path: terraformfiles
+       - name: Download Terraform Output from S3
+         run: |
+           aws s3 cp s3://your-terraform-state-bucket/tf_output.json terraformfiles/tf_output.json
           
        - name: Generate Ansible Inventory through python
          run: |
