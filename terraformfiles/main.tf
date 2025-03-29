@@ -8,7 +8,7 @@ terraform {
     key            = "terraform/state.tfstate"      # Path inside S3
     region         = "us-east-1"                    # Change to your region
     encrypt        = true
-    dynamodb_table = "terraform-lock"               # Optional for state locking
+    #dynamodb_table = "terraform-lock"               # Optional for state locking
   }
 }
 
