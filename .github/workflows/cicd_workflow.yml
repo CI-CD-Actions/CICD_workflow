@@ -38,7 +38,7 @@ jobs:
       - name: Upload Terraform Output
         run: |
           terraform output -json > tf_output.json
-          aws s3 cp tf_output.json s3://your-terraform-state-bucket/tf_output.json
+          aws s3 cp tf_output.json s3://cicdbucket2903/tf_output.json
         
   dynamic-phase:
      runs-on: self-hosted
