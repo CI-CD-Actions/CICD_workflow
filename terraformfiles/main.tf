@@ -2,6 +2,17 @@ provider "aws" {
   region     = "us-east-1"
 }
 
+terraform {
+  backend "s3" {
+    bucket         = "cicdbucket2903"  # Replace with your S3 bucket name
+    key            = "terraform/state.tfstate"      # Path inside S3
+    region         = "us-east-1"                    # Change to your region
+    encrypt        = true
+    dynamodb_table = "terraform-lock"               # Optional for state locking
+  }
+}
+
+
 module "aws_ami" {    # calling ami module to get the AMI ID
   source = "./datasource"
 }
@@ -23,15 +34,5 @@ resource "aws_instance" "my_ec2_system" {
 
 output "private_ips" {
   value = aws_instance.my_ec2_system[*].private_ip
-}
-
-terraform {
-  backend "s3" {
-    bucket         = "cicdbucket2903"  # Replace with your S3 bucket name
-    key            = "terraform/state.tfstate"      # Path inside S3
-    region         = "us-east-1"                    # Change to your region
-    encrypt        = true
-    dynamodb_table = "terraform-lock"               # Optional for state locking
-  }
 }
 
