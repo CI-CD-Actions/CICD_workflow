@@ -10,6 +10,10 @@ jobs:
       - name: checking out repository
         uses: actions/checkout@v4
 
+      - name: Initializing terraform 
+        working-directory: terraformfiles
+        run: terraform init
+
       - name: formating the terraform files
         working-directory: terraformfiles
         run: terraform fmt
@@ -17,10 +21,6 @@ jobs:
       - name: checking terraform file syntax
         working-directory: terraformfiles
         run: terraform validate
-
-      - name: Initializing terraform 
-        working-directory: terraformfiles
-        run: terraform init
 
       - name: terraform plan and saving plan
         working-directory: terraformfiles
