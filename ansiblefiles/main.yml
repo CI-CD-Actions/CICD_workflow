@@ -3,9 +3,6 @@
   become: yes   # Ensure the tasks run with sudo privileges
 
   tasks:
-    - name: Update package lists on Ubuntu
-
-
     - name: Install Python3
       apt:
         name: python3
