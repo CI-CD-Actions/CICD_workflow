@@ -4,8 +4,7 @@
 
   tasks:
     - name: Update package lists on Ubuntu
-      apt:
-        update_cache: yes
+
 
     - name: Install Python3
       apt:
