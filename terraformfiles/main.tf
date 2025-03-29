@@ -8,10 +8,10 @@ variable "aws_access_key" {}
 variable "aws_secret_key" {}
 
 module "aws_ami" {    # calling ami module to get the AMI ID
-  source = "../datasource"
+  source = "./datasource"
 }
 module "module_vpc" { # calling vpc module to get the details
-  source = "../vpc"
+  source = "./vpc"
 }
 
 resource "aws_instance" "my_ec2_system" {
