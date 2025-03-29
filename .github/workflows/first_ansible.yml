@@ -12,4 +12,4 @@ jobs:
 
       - name: Run Ansible Playbook
         working-directory: ansiblefiles
-        run: ansible-playbook main.yml
+        run: ansible-playbook -i inventory main.yml
