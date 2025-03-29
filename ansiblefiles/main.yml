@@ -1,0 +1,22 @@
+- hosts: all
+  gather_facts: true
+  become: yes   # Ensure the tasks run with sudo privileges
+
+  tasks:
+    - name: Update package lists on Ubuntu
+      apt:
+        update_cache: yes
+
+    - name: Install Python3
+      apt:
+        name: python3
+        state: latest
+      register: statusmsg
+
+    - name: Debug installation status
+      debug:
+        var: statusmsg
+
+    - name: Restart the server
+      reboot:
+        reboot_timeout: 100
