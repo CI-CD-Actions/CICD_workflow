@@ -8,7 +8,7 @@ variable "aws_access_key" {}
 variable "aws_secret_key" {}
 
 resource "aws_instance" "my_ec2_system" {
-  ami             = "ami-084568db4383264d4"
+  ami             = data.aws_ami.ubuntu.id
   instance_type   = "t2.micro"
   key_name        = "key-001501e8cc53ade44"
 
