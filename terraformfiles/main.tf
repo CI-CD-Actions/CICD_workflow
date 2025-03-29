@@ -13,6 +13,6 @@ resource "aws_instance" "my_ec2_system" {
   key_name        = "key-001501e8cc53ade44"
 
   tags = {
-    Name = "my_ec2_instance"
+    Name = "cicd-ec2-machine"
   }
 }
