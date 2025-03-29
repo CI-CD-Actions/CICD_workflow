@@ -7,8 +7,15 @@ provider "aws" {
 variable "aws_access_key" {}
 variable "aws_secret_key" {}
 
+module "aws_ami" {    # calling ami module to get the AMI ID
+  source = "../datasource"
+}
+module "module_vpc" { # calling vpc module to get the details
+  source = "../vpc"
+}
+
 resource "aws_instance" "my_ec2_system" {
-  ami             = data.aws_ami.ubuntu.id
+  ami             = module.aws_ami.ami_id
   instance_type   = "t2.micro"
   key_name        = "key-001501e8cc53ade44"
 
