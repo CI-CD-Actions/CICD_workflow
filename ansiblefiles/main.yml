@@ -1,4 +1,4 @@
-- hosts: all
+- hosts: 10.11.1.109
   gather_facts: true
   become: yes   # Ensure the tasks run with sudo privileges
 
