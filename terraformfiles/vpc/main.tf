@@ -40,7 +40,7 @@ resource "aws_security_group" "cicd_sg" {
 }
 resource "aws_subnet" "cicd_subnet" {       # creating subnet to vpc
   vpc_id                  = aws_vpc.cicd_vpc.id
-  cidr_block              = "10.10.1.0/24"
+  cidr_block              = "10.11.1.0/24"
   availability_zone       = "us-east-1a"
   map_public_ip_on_launch = true
   tags = {
