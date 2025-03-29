@@ -1,0 +1,15 @@
+name: ansible job
+
+on:
+  workflow_dispatch
+
+jobs:
+  ansible-test:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run Ansible Playbook
+        working-directory: ansiblefiles
+        run: ansible-playbook main.yml
